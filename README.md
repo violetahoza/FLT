@@ -12,11 +12,12 @@ This repository contains a collection of language parsers and interpreters built
   - [Infix to Prefix Converter](#infix-to-prefix-converter)
   - [Binary Tree Interpreter (Haskell-style)](#binary-tree-interpreter-haskell-style)
   - [Binary Tree Interpreter (ML-style)](#binary-tree-interpreter-ml-style)
+  - [Polynomials Interpreter](#polynomials-interpreter)
 
 ## Prerequisites
 
-- flex (or lex)
-- bison (or yacc)
+- lex (or flex)
+- yacc (or bison)
 - gcc
 
 ## Implementations
@@ -28,7 +29,7 @@ A simple Lisp-like language interpreter supporting basic list operations.
 #### Compilation
 
 ```bash
-flex l4.l
+lex l4.l
 yacc -d l4.y
 gcc -o LISP lex.yy.c y.tab.c -ly -ll
 ```
@@ -56,9 +57,9 @@ A parser for matrix operations with support for various matrix calculations.
 #### Compilation
 
 ```bash
-flex matrix.l
+lex matrix.l
 yacc -d matrix.y
-gcc -o MATRIX lex.yy.c y.tab.c -ly -ll -lm
+gcc -o MATRIX lex.yy.c y.tab.c -ly -ll
 ```
 
 #### Usage
@@ -95,7 +96,7 @@ Converts mathematical expressions from infix to postfix (Reverse Polish) notatio
 #### Compilation
 
 ```bash
-flex postfix.l
+lex postfix.l
 yacc -d postfix.y
 gcc -o POSTFIX lex.yy.c y.tab.c -ly -ll
 ```
@@ -120,7 +121,7 @@ Converts mathematical expressions from infix to prefix (Polish) notation.
 #### Compilation
 
 ```bash
-flex postfix.l  # Uses the same lexer
+lex postfix.l  # Uses the same lexer
 yacc -d prefix.y
 gcc -o PREFIX lex.yy.c y.tab.c -ly -ll
 ```
@@ -145,9 +146,9 @@ Binary tree operations using Haskell-like syntax.
 #### Compilation
 
 ```bash
-flex tree_haskel.l
+lex tree_haskel.l
 yacc -d tree_haskel.y
-gcc -o TREE_HASKELL lex.yy.c y.tab.c -ly -ll -lm
+gcc -o TREE_HASKELL lex.yy.c y.tab.c -ly -ll 
 ```
 
 #### Usage
@@ -185,9 +186,9 @@ Binary tree operations using ML-like syntax with comma-separated parameters.
 #### Compilation
 
 ```bash
-flex tree_ml.l
-yacc -d tree_ml.y  # Implementation needed
-gcc -o TREE_ML lex.yy.c y.tab.c -ly -ll -lm
+lex tree_ml.l
+yacc -d tree_ml.y  
+gcc -o TREE_ML lex.yy.c y.tab.c -ly -ll 
 ```
 
 #### Usage
@@ -204,5 +205,34 @@ Node(Lf, 10, Lf)
 
 # Insert a value
 insert(5, Node(Lf, 10, Lf))
+```
+
+### Polynomials Interpreter
+
+A lexico-syntactic analyzer that executes operations (addition, subtraction, multiplication, derivation) on polynomials with a single variable. 
+
+#### Compilation
+
+```bash
+lex polynomials.l
+yacc -d polynomials.y 
+gcc -o polynomials lex.yy.c y.tab.c -ly -ll -lm
+```
+
+#### Usage
+
+```bash
+./polynomials
+```
+
+#### Examples
+
+```
+# Multiplication
+(2 Y ^ 3 + 3 Y ^ 2 – Y + 5) * (Y ^ 2 – 4)
+# Derivation
+(2 Y ^ 3 + 3 Y ^ 2 – Y + 5)’
+# Compute the value of a polynomial in a point
+value [2 * Y ^ 3 + 3 * Y ^ 2 – Y + 5, 2]
 ```
 
