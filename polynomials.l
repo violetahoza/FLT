@@ -8,7 +8,8 @@
 
 [0-9]+      { yylval.ival = atoi(yytext); return NUMBER; }
 "value"     { return VALUE; }
-"Y"         { return VARIABLE; }
+"X"         { return XVAR; }
+"Y"         { return YVAR; }
 [-+*/()'\[\],\^\n] { return *yytext; }
 [ \t]+      { /* ignore whitespace */ }
 .           { /* ignore any other characters */ }
