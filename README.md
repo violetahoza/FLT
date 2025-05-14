@@ -230,9 +230,15 @@ gcc -o polynomials lex.yy.c y.tab.c -ly -ll -lm
 ```
 # Multiplication
 (2 Y ^ 3 + 3 Y ^ 2 – Y + 5) * (Y ^ 2 – 4)
+> 2 Y ^ 5 + 3 Y ^ 4 – 9 Y ^ 3 – 7 Y ^ 2 + 4 Y ^ 1 – 20 
 # Derivation
-(2 Y ^ 3 + 3 Y ^ 2 – Y + 5)’
+(2 Y ^ 3 + 3 Y ^ 2 – Y + 5)’Y
+> 6 Y ^ 2 + 6 Y ^ 1 – 1 
 # Compute the value of a polynomial in a point
-value [2 * Y ^ 3 + 3 * Y ^ 2 – Y + 5, 2]
+value [2 * Y ^ 3 + 3 * Y ^ 2 – Y + 5, 0, 2]
+> 31
+# Addition / subtraction on polynomials with 2 variables
+(3 * X ^ 1 + 2 * X ^ 2 * Y ^ 3) + (3 * X ^ 2 * Y ^ 3 + 2 * Y ^ 3) 
+> 2 * Y ^ 3 + 3 * X + 5 * X ^ 2 * Y ^ 3
 ```
 
