@@ -13,6 +13,7 @@ This repository contains a collection of language parsers and interpreters built
   - [Binary Tree Interpreter (Haskell-style)](#binary-tree-interpreter-haskell-style)
   - [Binary Tree Interpreter (ML-style)](#binary-tree-interpreter-ml-style)
   - [Polynomials Interpreter](#polynomials-interpreter)
+  - [Simple Expression Parser](#simple-expression-parser)
 
 ## Prerequisites
 
@@ -242,3 +243,14 @@ value [2 * Y ^ 3 + 3 * Y ^ 2 – Y + 5, 0, 2]
 > 2 * Y ^ 3 + 3 * X + 5 * X ^ 2 * Y ^ 3
 ```
 
+### Simple Expression Parser
+
+A recursive descent parser for simple arithmetic expressions supporting addition and subtraction operations.
+
+#### Usage
+
+```bash
+lex addsub.l
+gcc -o ADDSUB addsub.c lex.yy.c -ll
+./ADDSUB
+```
