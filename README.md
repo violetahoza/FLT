@@ -14,6 +14,8 @@ This repository contains a collection of language parsers and interpreters built
   - [Binary Tree Interpreter (ML-style)](#binary-tree-interpreter-ml-style)
   - [Polynomials Interpreter](#polynomials-interpreter)
   - [Simple Expression Parser](#simple-expression-parser)
+  - [List Operations Parser](#list-operations-parser)
+  - [Binary Search Trees in Haskell](#binary-search-trees-in-haskell)
 
 ## Prerequisites
 
@@ -253,4 +255,63 @@ A recursive descent parser for simple arithmetic expressions supporting addition
 lex addsub.l
 gcc -o ADDSUB addsub.c lex.yy.c -ll
 ./ADDSUB
+```
+
+### List Operations Parser
+
+A recursive descent parser for list operations in Haskell.
+
+#### Usage
+
+```bash
+lex lists.l
+gcc -o LISTS lists.c lex.yy.c -ll
+./LISTS
+```
+
+#### Examples
+
+```
+# Create lists
+[1, 2, 3, 4, 5]
+
+# Concatenate lists
+[1, 2] ++ [3, 4]        # Result: [1, 2, 3, 4]
+
+# Take first n elements
+take [1, 2, 3, 4, 5] 3  # Result: [1, 2, 3]
+
+# Drop first n elements
+drop [1, 2, 3, 4, 5] 2  # Result: [3, 4, 5]
+
+# CONS operation (add to front)
+1 : [2, 3, 4]           # Result: [1, 2, 3, 4]
+```
+
+### Binary Search Trees in Haskell
+
+A recursive descent parser implementation for binary search trees, demonstrating parsing without Yacc.
+
+#### Usage
+
+```bash
+lex trees.l
+gcc -o TREES trees.c lex.yy.c -ll
+./TREES
+```
+
+#### Examples
+
+```
+# Create a leaf node
+Node Lf 10 Lf
+
+# Insert values into a tree
+insert 5 (Node Lf 10 Lf)
+
+# Count nodes in a tree
+count (Node (Node Lf 5 Lf) 10 (Node Lf 15 Lf))
+
+# Complex tree operations
+insert 15 (insert 5 (Node Lf 10 Lf))
 ```
